@@ -6,7 +6,7 @@ class CustomBold extends AbstractTag {
     super()
     this.quillJS = quillJS
     this.name = 'custom-bold'
-    this.pattern = this._getCustomPatternOrDefault(options, this.name, /(#bd)(.*)(#)/g)
+    this.pattern = this._getCustomPatternOrDefault(options, this.name, /(#bd)(.* ?)(#)/g)
     this.getAction.bind(this)
     this._meta = meta()
     this.activeTags = this._getActiveTagsWithoutIgnore(this._meta.applyHtmlTags, options.ignoreTags)
