@@ -4,21 +4,10 @@ import QuillMarkdown from '../src/app'
 import CustomTag from './customTag';
 import CustomBold from './bold';
 
-console.log("Custom TAG 2");
-
 const Block = Quill.import('formats/blockquote');
 const Inline = Quill.import('blots/inline');
 
-class QuillCustomBold extends Inline {
-  optimize(context) {
-    console.log('optimise');
-    super.optimize(context);
-    if (this.domNode.tagName !== this.statics.tagName[0]) {
-      this.replaceWith(this.statics.blotName);
-    }
-  }
-
-}
+class QuillCustomBold extends Inline { }
 QuillCustomBold.blotName = 'custom-bold';
 QuillCustomBold.tagName = ['CUSTOM-BOLD'];
 
