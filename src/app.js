@@ -30,7 +30,7 @@ class MarkdownActivity {
     const insertDelta = delta.ops.find(e => e.hasOwnProperty('insert')) || {}
     const isRemoveCommand = delta.ops.find(e => e.hasOwnProperty('delete')) || insertDelta.insert === '\n'
     if (isRemoveCommand && removeLine.domNode.textContent.length <= 1) {
-      const rangeElements = ['PRE', 'BLOCKQUOTE']
+      const rangeElements = ['PRE', 'BLOCKQUOTE', 'CUSTOM-TAG']
       if (rangeElements.includes(removeLine.domNode.tagName)) {
         this.onRemoveElement({ delete: 1 })
       }
