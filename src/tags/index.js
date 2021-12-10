@@ -14,7 +14,7 @@ import CodeblockFullText from './codeblock/fulltext'
 import Strikethrough from './strikethrough'
 
 class TagsOperators {
-  constructor (quillJS, options = { tags: {} }) {
+  constructor (quillJS, options = { tags: {}, extraInlineTags: {}, extraFullTextTags: {} }) {
     this.quillJS = quillJS
     this.getOperatorsAll.bind(this)
     this.supportInlineTags = [
@@ -24,7 +24,8 @@ class TagsOperators {
       new Codeblock(this.quillJS, options).getAction(),
       new InlineCode(this.quillJS, options).getAction(),
       new Strikethrough(this.quillJS, options).getAction(),
-      new Italics(this.quillJS, options).getAction()
+      new Italics(this.quillJS, options).getAction(),
+      ...Object.values(options.extraInlineTags).map(ExtraTag => new ExtraTag(this.quillJS, options).getAction())
     ]
 
     this.supportfullTextTags = [
@@ -39,7 +40,8 @@ class TagsOperators {
       new LinkFullText(this.quillJS, options).getAction(),
       new InlineCode(this.quillJS, options).getAction(),
       new Strikethrough(this.quillJS, options).getAction(),
-      new Italics(this.quillJS, options).getAction()
+      new Italics(this.quillJS, options).getAction(),
+      ...Object.values(options.extraFullTextTags).map(ExtraTag => new ExtraTag(this.quillJS, options).getAction())
     ]
 
     this.tags = [...this.supportInlineTags]
