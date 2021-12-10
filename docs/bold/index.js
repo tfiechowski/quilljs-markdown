@@ -17,11 +17,10 @@ class CustomBold extends AbstractTag {
       name: this.name,
       pattern: this.pattern,
       action: (text, selection, pattern, lineStart) => new Promise((resolve) => {
-        console.log("custom bold action");
         let match = pattern.exec(text)
         const [annotatedText, , matchedText] = match
         const startIndex = lineStart + match.index
-        if (text.match(/^([*_ \n]+)$/g) || !this.activeTags.length) {
+        if (text.match(/^([# \n]+)$/g) || !this.activeTags.length) {
           resolve(false)
           return
         }
