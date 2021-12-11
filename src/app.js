@@ -2,6 +2,8 @@ import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 import TagsOperators from './tags'
 
+import AbstractTag from './tags/AbstractTag'
+
 class MarkdownActivity {
   constructor (quillJS, options = {}) {
     this.quillJS = quillJS
@@ -173,3 +175,5 @@ class MarkdownActivity {
 }
 
 export default MarkdownActivity
+
+export { AbstractTag }
